@@ -45,8 +45,8 @@ class ApnsPHP_Message
 	protected $_sSound; /**< @type string Sound to play. */
 	protected $_sCategory; /**< @type string notification category. */
 	protected $_bContentAvailable; /**< @type boolean True to initiates the Newsstand background download. @see http://tinyurl.com/ApplePushNotificationNewsstand */
-
-	protected $_aCustomProperties; /**< @type mixed Custom properties container. */
+    protected $_bMutableContent; /**< @type boolean True to activate mutable content key support for ios10 rich notifications. @see https://developer.apple.com/reference/usernotifications/unnotificationserviceextension */
+    protected $_aCustomProperties; /**< @type mixed Custom properties container. */
 
 	protected $_nExpiryValue = 604800; /**< @type integer That message will expire in 604800 seconds (86400 * 7, 7 days) if not successful delivered. */
 
@@ -236,6 +236,34 @@ class ApnsPHP_Message
 	{
 		return $this->_bContentAvailable;
 	}
+
+    /**
+     * Set the mutable-content key for Notification Service Extensions on iOS10
+     * @see https://developer.apple.com/reference/usernotifications/unnotificationserviceextension
+     *
+     * @param  $bMutableContent @type boolean True to enable flag
+     * @throws ApnsPHP_Message_Exception if MutableContent is not a
+     *         boolean.
+     */
+    public function setMutableContent($bMutableContent = true)
+    {
+        if (!is_bool($bMutableContent)) {
+            throw new ApnsPHP_Message_Exception(
+                "Invalid mutable-content value '{$bMutableContent}'"
+            );
+        }
+        $this->_bMutableContent = $bMutableContent ? true : null;
+    }
+
+    /**
+     * Get if should set the mutable-content ios10 rich notifications flag
+     *
+     * @return @type boolean mutable-content ios10 rich notifications flag
+     */
+    public function getMutableContent()
+    {
+        return $this->_bMutableContent;
+    }
 
 	/**
 	 * Set a custom property.
