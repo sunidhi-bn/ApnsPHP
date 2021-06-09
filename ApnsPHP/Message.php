@@ -45,8 +45,8 @@ class ApnsPHP_Message
 	protected $_sSound; /**< @type string Sound to play. */
 	protected $_sCategory; /**< @type string notification category. */
 	protected $_bContentAvailable; /**< @type boolean True to initiates the Newsstand background download. @see http://tinyurl.com/ApplePushNotificationNewsstand */
-    protected $_bMutableContent; /**< @type boolean True to activate mutable content key support for ios10 rich notifications. @see https://developer.apple.com/reference/usernotifications/unnotificationserviceextension */
-    protected $_aCustomProperties; /**< @type mixed Custom properties container. */
+        protected $_bMutableContent; /**< @type boolean True to activate mutable content key support for ios10 rich notifications. @see https://developer.apple.com/reference/usernotifications/unnotificationserviceextension */
+        protected $_aCustomProperties; /**< @type mixed Custom properties container. */
 
 	protected $_nExpiryValue = 604800; /**< @type integer That message will expire in 604800 seconds (86400 * 7, 7 days) if not successful delivered. */
 
