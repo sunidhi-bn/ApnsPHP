@@ -404,6 +404,9 @@ class ApnsPHP_Message
 		if (isset($this->_bContentAvailable)) {
 			$aPayload[self::APPLE_RESERVED_NAMESPACE]['content-available'] = (int)$this->_bContentAvailable;
 		}
+        if (isset($this->_bMutableContent)) {
+            $aPayload[self::APPLE_RESERVED_NAMESPACE]['mutable-content'] = (int)$this->_bMutableContent;
+        }
 		if (isset($this->_sCategory)) {
 			$aPayload[self::APPLE_RESERVED_NAMESPACE]['category'] = (string)$this->_sCategory;
 		}
